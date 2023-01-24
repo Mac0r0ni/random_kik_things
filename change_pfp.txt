@@ -1,0 +1,7 @@
+        if chat_message.body.lower().startswith("change_pfp "):
+            pfp_url = chat_message.body.lower().replace("change_pfp ", "")
+            img_data = requests.get(pfp_url).content
+            with open('pfp.jpg', 'wb') as handler:
+                handler.write(img_data)
+                time.sleep(1)
+                self.client.set_profile_picture("pfp.jpg")
