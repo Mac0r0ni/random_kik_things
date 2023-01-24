@@ -1,0 +1,6 @@
+        if chat_message.body.lower().startswith("change "):
+            remove_change = chat_message.body.lower().replace("change ", "")
+            split_string = remove_change.split(":")
+            display_name_first = split_string[0]
+            display_name_last = split_string[1]
+            self.client.change_display_name(display_name_first, display_name_last)
