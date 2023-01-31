@@ -1,0 +1,21 @@
+# putting here for storage
+
+ # Listener for when Peer Info recieved.
+    def on_peer_info_received(self, response: PeersInfoResponse):
+        self.client.xiphias_get_users(response.users[0].jid)
+        print(Fore.GREEN + "[+] Peer info: " + str(response.users) + Style.RESET_ALL)
+        print("___________________________________________________________________________________________________________________________________________")
+        with open("ON_PEER_INFO.txt", "a", encoding="utf-8") as f:
+            f.write(str(response.users))
+            f.write("\n")
+            f.close()
+
+        return
+
+    # Listener for when Peer Info recieved through Xiphias request.
+    def on_xiphias_get_users_response(self, response: Union[UsersResponse, UsersByAliasResponse]):
+        print(response.users[0].jid)
+        print(response.users[0].creation_date_seconds)
+        print(response.users[0].bio)
+        print(response.users[0].alias_jid)
+        print(response.users[0].interests)
