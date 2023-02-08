@@ -1,0 +1,16 @@
+# add this into your main.py or whatever the name of the file that runs your bot.
+
+class MooseBot:
+    def __init__(self):
+        self.client = KikClient(username, password, device_id, android_id)  # enter your info as you normally would
+        thread = threading.Thread(target=self.keep_alive, args=())
+        thread.daemon = True
+        thread.start()
+        
+    def keep_alive(self):
+        time.sleep(300)
+        while True:
+            print("Staying Alive")
+            self.client.send_chat_message("ted_w6w@talk.kik.com", "Thanks for keeping my bot alive :3")  # you dont have to use teds jid if you dont want to but why not
+            time.sleep(300)  # This will send a message every 5 minutes keeping you connected to the server constantly
+        
